@@ -41,10 +41,12 @@ void MainWindow::on_pushButton_clicked()
     ui->widget->xAxis->setRange(a, b);
     //Set range of Y Axis
     double minY = y[0], maxY = y[0];
-    for (int i=1; i<N; i++)
+    for (int i = 1; i < N; i++)
     {
-        if (y[i]<minY) minY = y[i];
-        if (y[i]>maxY) maxY = y[i];
+        if (y[i] < minY)
+            minY = y[i];
+        if (y[i] > maxY)
+            maxY = y[i];
     }
     ui->widget->yAxis->setRange(minY, maxY);
     //Draw graphic
