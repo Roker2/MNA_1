@@ -44,6 +44,7 @@ void MainWindow::on_pushButton_clicked()
     double minY, maxY;
     MinMaxY(&minY, &maxY, y);
     ui->widget->yAxis->setRange(minY, maxY);
+    ui->widget->graph(0)->setPen(QPen(Qt::red)); // line color red for graph
     //Draw graphic
     ui->widget->replot();
 }
