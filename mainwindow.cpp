@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "CommonFunctions.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,14 +41,8 @@ void MainWindow::on_pushButton_clicked()
     //Set range of X
     ui->widget->xAxis->setRange(a, b);
     //Set range of Y Axis
-    double minY = y[0], maxY = y[0];
-    for (int i = 1; i < N; i++)
-    {
-        if (y[i] < minY)
-            minY = y[i];
-        if (y[i] > maxY)
-            maxY = y[i];
-    }
+    double minY, maxY;
+    MinMaxY(&minY, &maxY, y);
     ui->widget->yAxis->setRange(minY, maxY);
     //Draw graphic
     ui->widget->replot();
