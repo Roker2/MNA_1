@@ -69,7 +69,7 @@ void MainWindow::on_pushButton_clicked()
             x_new = temp1;
             break;
         case (-1):
-            ui->lineEditAnswer->setText("Error!" + QString::number(x_new));
+            ui->lineEditAnswer->setText(QString::number(x_new));
             return;
             break;
         }
