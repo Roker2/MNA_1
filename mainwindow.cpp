@@ -36,6 +36,11 @@ void MainWindow::on_pushButton_clicked()
     double StartX = ui->lineEditStartValue->text().toDouble();
     double a = -StartX;//left
     double b = StartX;//right
+    if (StartX < 0)
+    {
+        a = StartX;
+        b = -StartX;
+    }
     double h = 0.01;//step
     int N = (b - a) / h + 2;//quantity of steps
     QVector<double> x(N), y(N);//coordinates
