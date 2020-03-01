@@ -29,3 +29,9 @@ int QuadraticEquation(double a, double b, double c, int *first, int *second)
         return -1;//D < 0
     }
 }
+
+//|a - b|
+double AbsDifference(double a, double b)
+{
+    return abs(a - b);
+}

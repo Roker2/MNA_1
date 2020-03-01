@@ -6,5 +6,6 @@
 
 void MinMaxY(double *minY, double *maxY, QVector<double> y);
 int QuadraticEquation(double a, double b, double c, int *first, int *second);
+double AbsDifference(double a, double b);
 
 #endif // COMMONFUNCTIONS_H
