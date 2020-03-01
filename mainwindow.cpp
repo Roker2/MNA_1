@@ -46,6 +46,42 @@ void MainWindow::on_pushButton_clicked()
     //MinMaxY(&minY, &maxY, y);
     ui->widget->yAxis->setRange(minY, maxY);
     //ui->widget->graph(0)->setPen(QPen(Qt::red)); // line color red for graph
+    ui->widget->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
     //Draw graphic
     ui->widget->replot();
+    i = 1;
+    double  x_new = StartX, x_old;
+    do
+    {
+        x_old = x_new;
+        double temp1, temp2, a = CrazyMath::derivative(CrazyMath::derivative(Function))(x_old) / 2,
+                b = CrazyMath::derivative(Function)(x_old) - x_old * CrazyMath::derivative(CrazyMath::derivative(Function))(x_old) / 4 + x_old * x_old * CrazyMath::derivative(CrazyMath::derivative(Function))(x_old) / 2,
+                c = Function(x_old) - x_old * CrazyMath::derivative(Function)(x_old);
+        int mode = QuadraticEquation(a, b, c, &temp1, &temp2);
+        switch (mode) {
+        case (0):
+            if (AbsDifference(x_old, temp1) >= AbsDifference(x_old, temp2))
+                x_new = temp2;
+            else
+                x_new = temp1;
+            break;
+        case (1):
+            x_new = temp1;
+            break;
+        case (-1):
+            ui->lineEditAnswer->setText("Error!" + QString::number(x_new));
+            return;
+            break;
+        }
+        ui->widget->addGraph();
+        QVector<double> x_(1), y_(1);
+        x_[0] = x_new;
+        y_[0] = Function(x_new);
+        ui->widget->graph(i)->setData(x_, y_);
+        ui->widget->graph(i)->setLineStyle(QCPGraph::lsImpulse);
+        ui->widget->replot();
+        i++;
+    }
+    while (abs(x_new - x_old) > 0.01);
+    ui->lineEditAnswer->setText(QString::number(x_new));
 }
