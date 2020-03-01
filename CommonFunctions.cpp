@@ -13,7 +13,7 @@ void MinMaxY(double *minY, double *maxY, QVector<double> y)
 }
 
 //ax^2+bx+c=0
-int QuadraticEquation(double a, double b, double c, int *first, int *second)
+int QuadraticEquation(double a, double b, double c, double *first, double *second)
 {
     double D = b*b - 4 * c * a;
     if (D > 0) {
