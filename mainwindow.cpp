@@ -106,6 +106,7 @@ void MainWindow::on_pushButton_clicked()
         y_[0] = Function(x_new);
         ui->widget->graph(i)->setData(x_, y_);
         ui->widget->graph(i)->setLineStyle(QCPGraph::lsImpulse);
+        ui->widget->graph(i)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 20));
         ui->widget->replot();
         i++;
     }
