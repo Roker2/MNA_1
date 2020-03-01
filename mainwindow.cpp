@@ -34,13 +34,8 @@ void MainWindow::on_pushButton_clicked()
     //Declaring a math function
     auto Function = ((1 / CrazyMath::X) - 2);
     double StartX = ui->lineEditStartValue->text().toDouble();
-    double a = -StartX;//left
-    double b = StartX;//right
-    if (StartX < 0)
-    {
-        a = StartX;
-        b = -StartX;
-    }
+    double a = -5;//left
+    double b = 5;//right
     double h = 0.01;//step
     int N = (b - a) / h + 2;//quantity of steps
     QVector<double> x(N), y(N);//coordinates
