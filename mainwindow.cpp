@@ -74,6 +74,7 @@ void MainWindow::on_pushButton_clicked()
             break;
         }
         ui->widget->addGraph();
+        ui->widget->graph(i)->setPen(QPen(Qt::red));
         QVector<double> x_(1), y_(1);
         x_[0] = x_new;
         y_[0] = Function(x_new);
