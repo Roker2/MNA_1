@@ -68,11 +68,11 @@ void MainWindow::on_pushButton_clicked()
     do
     {
         x_old = x_new;
-        double temp1, temp2, a = SecondDerivative(x_old) / 2,
+        /*double temp1, temp2, a = SecondDerivative(x_old) / 2,
                 b = FirstDerivative(x_old) - x_old * SecondDerivative(x_old) / 4,
                 c = FirstFunction(x_old) - x_old * FirstDerivative(x_old) + x_old * x_old * SecondDerivative(x_old) / 2;
-        int mode = QuadraticEquation(a, b, c, &temp1, &temp2);
-        switch (mode) {
+        int mode = QuadraticEquation(a, b, c, &temp1, &temp2);*/
+        /*switch (mode) {
         case (0):
             if (AbsDifference(x_old, temp1) >= AbsDifference(x_old, temp2))
                 x_new = temp2;
@@ -86,7 +86,14 @@ void MainWindow::on_pushButton_clicked()
             ui->lineEditAnswer->setText(QString::number(x_new));
             return;
             break;
-        }
+        }*/
+        double D = FirstDerivative(x_old) * FirstDerivative(x_old) - 2 * FirstFunction(x_old) * SecondDerivative(x_old);
+        double temp1 = x_old - (FirstDerivative(x_old) + sqrt(FirstDerivative(x_old) * FirstDerivative(x_old) - 2 * FirstFunction(x_old) * SecondDerivative(x_old))) / SecondDerivative(x_old);
+        double temp2 = x_old - (FirstDerivative(x_old) - sqrt(FirstDerivative(x_old) * FirstDerivative(x_old) - 2 * FirstFunction(x_old) * SecondDerivative(x_old))) / SecondDerivative(x_old);
+        if (AbsDifference(x_old, temp1) >= AbsDifference(x_old, temp2))
+            x_new = temp2;
+        else
+            x_new = temp1;
         ui->widget->addGraph();
         ui->widget->graph(i)->setPen(QPen(Qt::red));
         QVector<double> x_(1), y_(1);
