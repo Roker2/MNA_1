@@ -14,6 +14,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+double FirstFunction(double x)
+{
+    return (1 / x) - 2;
+}
+
+double FirstDerivative(double x)
+{
+    return - 1 / (x * x);
+}
+
+double SecondDerivative(double x)
+{
+    return 2 / (x * x * x);
+}
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -54,9 +68,9 @@ void MainWindow::on_pushButton_clicked()
     do
     {
         x_old = x_new;
-        double temp1, temp2, a = CrazyMath::derivative(CrazyMath::derivative(Function))(x_old) / 2,
-                b = CrazyMath::derivative(Function)(x_old) - x_old * CrazyMath::derivative(CrazyMath::derivative(Function))(x_old) / 4 + x_old * x_old * CrazyMath::derivative(CrazyMath::derivative(Function))(x_old) / 2,
-                c = Function(x_old) - x_old * CrazyMath::derivative(Function)(x_old);
+        double temp1, temp2, a = SecondDerivative(x_old) / 2,
+                b = FirstDerivative(x_old) - x_old * SecondDerivative(x_old) / 4,
+                c = FirstFunction(x_old) - x_old * FirstDerivative(x_old) + x_old * x_old * SecondDerivative(x_old) / 2;
         int mode = QuadraticEquation(a, b, c, &temp1, &temp2);
         switch (mode) {
         case (0):
@@ -84,5 +98,6 @@ void MainWindow::on_pushButton_clicked()
         i++;
     }
     while (AbsDifference(x_new, x_old) > 0.01);
+    //while (i < 1000);
     ui->lineEditAnswer->setText(QString::number(x_new));
 }
