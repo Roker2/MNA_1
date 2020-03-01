@@ -19,12 +19,13 @@ int QuadraticEquation(double a, double b, double c, int *first, int *second)
     if (D > 0) {
         *first = (-b + sqrt(D)) / (2 * a);
         *second = (-b - sqrt(D)) / (2 * a);
+        return 0;//All done
     }
     else if (D == 0) {
         *first = (-b) / (2 * a);
+        return 1;//D == 0
     }
     else {
         return -1;//D < 0
     }
-    return 0;//All done
 }
