@@ -82,6 +82,6 @@ void MainWindow::on_pushButton_clicked()
         ui->widget->replot();
         i++;
     }
-    while (abs(x_new - x_old) > 0.01);
+    while (AbsDifference(x_new, x_old) > 0.01);
     ui->lineEditAnswer->setText(QString::number(x_new));
 }
