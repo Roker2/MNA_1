@@ -60,6 +60,32 @@
      <string>Start Value</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEditAnswer">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>490</y>
+      <width>113</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>470</y>
+      <width>57</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Answer</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
