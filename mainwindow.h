@@ -21,5 +21,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QVector<double> Xs;
 };
 #endif // MAINWINDOW_H

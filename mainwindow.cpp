@@ -67,6 +67,7 @@ void MainWindow::on_pushButton_clicked()
     double  x_new = StartX, x_old;
     do
     {
+        Xs.append(x_old);
         x_old = x_new;
         /*double temp1, temp2, a = SecondDerivative(x_old) / 2,
                 b = FirstDerivative(x_old) - x_old * SecondDerivative(x_old) / 4,
