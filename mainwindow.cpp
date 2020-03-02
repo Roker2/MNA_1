@@ -110,3 +110,17 @@ void MainWindow::on_pushButton_clicked()
     //while (i < 1000);
     ui->lineEditAnswer->setText(QString::number(x_new));
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->widget->clearGraphs();
+    ui->widget->addGraph();
+    ui->widget->xAxis->setRange(Xs[0], Xs[Xs.count() - 1]);
+    QVector<double> Ytemp;
+    for (int i = 0; i < Xs.count(); i++) {
+        Ytemp.append(i + 1);
+    }
+    ui->widget->graph(0)->setData(Xs, Ytemp);
+    ui->widget->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
+    ui->widget->replot();
+}
