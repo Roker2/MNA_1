@@ -65,6 +65,7 @@ void MainWindow::on_pushButton_clicked()
     ui->widget->replot();
     i = 1;
     double  x_new = StartX, x_old;
+    Xs.clear();
     do
     {
         Xs.append(x_old);
@@ -107,6 +108,7 @@ void MainWindow::on_pushButton_clicked()
         i++;
     }
     while (AbsDifference(x_new, x_old) > 0.01);
+    Xs.append(x_new);
     //while (i < 1000);
     ui->lineEditAnswer->setText(QString::number(x_new));
 }
@@ -120,7 +122,7 @@ void MainWindow::on_pushButton_2_clicked()
     for (int i = 0; i < Xs.count(); i++) {
         Ytemp.append(i + 1);
     }
-    ui->widget->graph(0)->setData(Xs, Ytemp);
+    ui->widget->graph(0)->setData(Ytemp, Xs);
     ui->widget->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 10));
     ui->widget->replot();
 }
